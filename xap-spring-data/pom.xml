@@ -100,6 +100,41 @@
                 </dependencies>
             </plugin>
         </plugins>
+        <pluginManagement>
+        	<plugins>
+        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        		<plugin>
+        			<groupId>org.eclipse.m2e</groupId>
+        			<artifactId>lifecycle-mapping</artifactId>
+        			<version>1.0.0</version>
+        			<configuration>
+        				<lifecycleMappingMetadata>
+        					<pluginExecutions>
+        						<pluginExecution>
+        							<pluginExecutionFilter>
+        								<groupId>
+        									org.apache.openjpa
+        								</groupId>
+        								<artifactId>
+        									openjpa-maven-plugin
+        								</artifactId>
+        								<versionRange>
+        									[2.3.0,)
+        								</versionRange>
+        								<goals>
+        									<goal>test-enhance</goal>
+        								</goals>
+        							</pluginExecutionFilter>
+        							<action>
+        								<ignore></ignore>
+        							</action>
+        						</pluginExecution>
+        					</pluginExecutions>
+        				</lifecycleMappingMetadata>
+        			</configuration>
+        		</plugin>
+        	</plugins>
+        </pluginManagement>
     </build>
 
     <!-- Align spring versions for all projects using openspaces -->
@@ -123,7 +158,79 @@
             <artifactId>gs-openspaces</artifactId>
             <version>${gsVersion}</version>
             <scope>compile</scope>
-        </dependency>
+				<exclusions>
+					<exclusion>
+						<artifactId>junit</artifactId>
+						<groupId>junit</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>jruby</artifactId>
+						<groupId>org.jruby</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>hibernate-core</artifactId>
+						<groupId>org.hibernate</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>xap-jms</artifactId>
+						<groupId>com.gigaspaces</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>jotm-core</artifactId>
+						<groupId>org.ow2.jotm</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>spring-web</artifactId>
+						<groupId>org.springframework</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>commons-pool</artifactId>
+						<groupId>commons-pool</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>jbossjta</artifactId>
+						<groupId>org.jboss.jbossts</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>hsqldb</artifactId>
+						<groupId>org.hsqldb</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>geronimo-jta_1.1_spec</artifactId>
+						<groupId>org.apache.geronimo.specs</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>geronimo-jpa_2.0_spec</artifactId>
+						<groupId>org.apache.geronimo.specs</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>
+						geronimo-j2ee-connector_1.5_spec
+					</artifactId>
+						<groupId>org.apache.geronimo.specs</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>velocity</artifactId>
+						<groupId>velocity</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>transactions-jta</artifactId>
+						<groupId>com.atomikos</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>openjpa</artifactId>
+						<groupId>org.apache.openjpa</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>commons-lang</artifactId>
+						<groupId>commons-lang</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>commons-collections</artifactId>
+						<groupId>commons-collections</groupId>
+					</exclusion>
+				</exclusions>
+	        </dependency>
         <dependency>
             <groupId>com.gigaspaces</groupId>
             <artifactId>gs-runtime</artifactId>
